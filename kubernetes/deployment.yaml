@@ -25,6 +25,6 @@ spec:
     spec:
       containers:
         - name: schedulesync-api
-          image: missaelcorm/schedulesync-api:latest
+          image: missaelcorm/schedulesync-api:5
           ports:
             - containerPort: 3000
