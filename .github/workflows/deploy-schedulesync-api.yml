@@ -41,3 +41,4 @@ jobs:
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.PAT_GA_SCHEDULESYNC_DEVOPS }}
+          message: 'Mod docker_tag: "${{ env.DOCKER_TAG }}" ${date}'
