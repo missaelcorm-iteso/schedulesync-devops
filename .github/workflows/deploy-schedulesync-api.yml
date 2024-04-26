@@ -22,7 +22,7 @@ jobs:
         run: cat ${{ env.SCHEDULESYNC_WORKSPACE }}/${{ env.SCHEDULESYNC_DEPLOYMENT_FILE }}
         
       - name: "Replace with new Docker Image Tag: ${{ env.DOCKER_IMAGE }}/${{ env.DOCKER_TAG }}"
-        run: sed -i 's+${{ env.DOCKER_IMAGE }}.*+${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_TAG }}' ${{ env.SCHEDULESYNC_WORKSPACE }}/${{ env.SCHEDULESYNC_DEPLOYMENT_FILE }}
+        run: sed -i 's+${{ env.DOCKER_IMAGE }}.*+${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_TAG }}+g' ${{ env.SCHEDULESYNC_WORKSPACE }}/${{ env.SCHEDULESYNC_DEPLOYMENT_FILE }}
 
       - name: Content of ${{ env.SCHEDULESYNC_WORKSPACE }}/${{ env.SCHEDULESYNC_DEPLOYMENT_FILE }}
         run: cat ${{ env.SCHEDULESYNC_WORKSPACE }}/${{ env.SCHEDULESYNC_DEPLOYMENT_FILE }}
