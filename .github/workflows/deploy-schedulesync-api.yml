@@ -1,0 +1,31 @@
+name: Deploy ScheduleSync API
+
+on: [repository_dispatch]
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, schedulesync]
+    env:
+      DOCKER_IMAGE: ${{ github.event.vars.docker_image }}
+      DOCKER_TAG: ${{ github.event.vars.docker_tag }}
+      SCHEDULESYNC_WORKSPACE: "kubernetes/manifests/"
+      SCHEDULESYNC_DEPLOYMENT_FILE: "deployment.yaml"
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0             # otherwise, you will fail to push refs to dest repo
+      
+      - name: Content of ${{ env.SCHEDULESYNC_WORKSPACE }}/${{ env.SCHEDULESYNC_DEPLOYMENT_FILE }}
+        run: cat ${{ env.SCHEDULESYNC_WORKSPACE }}/${{ env.SCHEDULESYNC_DEPLOYMENT_FILE }}
+        
+      - name: "Replace with new Docker Image Tag: ${{ env.DOCKER_IMAGE }}/${{ env.DOCKER_TAG }}"
+        run: sed -i 's+${{ env.DOCKER_IMAGE }}.*+${{ env.DOCKER_IMAGE }}:${{ env.DOCKER_TAG }}' ${{ env.SCHEDULESYNC_WORKSPACE }}/${{ env.SCHEDULESYNC_DEPLOYMENT_FILE }}
+
+      - name: Content of ${{ env.SCHEDULESYNC_WORKSPACE }}/${{ env.SCHEDULESYNC_DEPLOYMENT_FILE }}
+        run: cat ${{ env.SCHEDULESYNC_WORKSPACE }}/${{ env.SCHEDULESYNC_DEPLOYMENT_FILE }}
+
+      # - name: Commit & Push changes
+      #   uses: actions-js/push@master
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
