@@ -37,7 +37,7 @@ jobs:
       - name: Content of ${{ env.SCHEDULESYNC_WORKSPACE }}/${{ env.SCHEDULESYNC_DEPLOYMENT_FILE }}
         run: cat ${{ env.SCHEDULESYNC_WORKSPACE }}/${{ env.SCHEDULESYNC_DEPLOYMENT_FILE }}
 
-      # - name: Commit & Push changes
-      #   uses: actions-js/push@master
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
