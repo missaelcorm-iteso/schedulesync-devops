@@ -8,8 +8,8 @@ jobs:
   deploy:
     runs-on: [self-hosted, schedulesync]
     env:
-      DOCKER_IMAGE: ${{ github.event.vars.docker_image }}
-      DOCKER_TAG: ${{ github.event.vars.docker_tag }}
+      DOCKER_IMAGE: ${{ github.event.client_payload.vars.docker_image }}
+      DOCKER_TAG: ${{ github.event.client_payload.vars.docker_tag }}
       SCHEDULESYNC_WORKSPACE: "kubernetes/manifests/"
       SCHEDULESYNC_DEPLOYMENT_FILE: "deployment.yaml"
     steps:
