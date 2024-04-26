@@ -3,13 +3,23 @@ name: Deploy ScheduleSync API
 on: 
   repository_dispatch:
     types: [deploy-schedulesync-api]
+  workflow_dispatch:
+    inputs:
+      docker_tag:
+        description: 'Docker image tag'
+        required: true
+        default: 'latest'
+      docker_image:
+        description: 'Docker image'
+        required: true
+        default: 'missaelcorm/schedulesync-api'
     
 jobs:
   deploy:
     runs-on: [self-hosted, schedulesync]
     env:
-      DOCKER_IMAGE: ${{ github.event.client_payload.docker_image }}
-      DOCKER_TAG: ${{ github.event.client_payload.docker_tag }}
+      DOCKER_IMAGE: ${{ github.event.client_payload.docker_image == '' && github.event.inputs.docker_image || github.event.client_payload.docker_image }}
+      DOCKER_TAG: ${{ github.event.client_payload.docker_tag == '' && github.event.inputs.docker_tag || github.event.client_payload.docker_tag }}
       SCHEDULESYNC_WORKSPACE: "kubernetes/manifests/"
       SCHEDULESYNC_DEPLOYMENT_FILE: "deployment.yaml"
     steps:
