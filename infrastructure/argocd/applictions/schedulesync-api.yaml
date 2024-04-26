@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: schedulesync-api
+spec:
+  destination:
+    namespace: schedulesync-api
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: kubernetes/manifests
+    repoURL: https://github.com/missaelcorm-iteso/schedulesync-devops
+    targetRevision: main
