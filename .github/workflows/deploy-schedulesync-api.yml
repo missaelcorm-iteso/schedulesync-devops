@@ -1,7 +1,9 @@
 name: Deploy ScheduleSync API
 
-on: [repository_dispatch]
-
+on: 
+  repository_dispatch:
+    types: [deploy-schedulesync-api]
+    
 jobs:
   deploy:
     runs-on: [self-hosted, schedulesync]
