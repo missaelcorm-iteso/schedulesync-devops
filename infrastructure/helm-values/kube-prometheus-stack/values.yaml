@@ -33,7 +33,7 @@ prometheus:
     annotations:
       kubernetes.io/ingress.class: nginx
     hosts:
-      - host: prometheus.local
+      - prometheus.local
   prometheusSpec:
     retention: 365d
     storageSpec:
