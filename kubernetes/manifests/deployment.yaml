@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: schedulesync-api
-          image: missaelcorm/schedulesync-api:v0.10
+          image: missaelcorm/schedulesync-api:v0.11
           env:
             - name:  MONGO_PROTOCOL
               valueFrom:
