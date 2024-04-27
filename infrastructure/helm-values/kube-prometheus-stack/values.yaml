@@ -43,8 +43,11 @@ prometheus:
           resources:
             requests:
               storage: 20Gi
-              
-    serviceMonitorSelector: {}
+
+    serviceMonitorSelector:
+      matchLabels:
+        release: kube-prometheus-stack
+        app: schedulesync-api
 
     serviceMonitorNamespaceSelector: {}
 
