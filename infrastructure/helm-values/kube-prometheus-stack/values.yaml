@@ -47,7 +47,6 @@ prometheus:
     serviceMonitorSelector:
       matchLabels:
         release: kube-prometheus-stack
-        app: schedulesync-api
 
     serviceMonitorNamespaceSelector: {}
 
