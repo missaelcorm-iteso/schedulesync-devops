@@ -43,6 +43,13 @@ prometheus:
           resources:
             requests:
               storage: 20Gi
+    serviceMonitorSelector:
+      matchLabels:
+        app: schedulesync-api
+
+    serviceMonitorNamespaceSelector:
+      matchLabels:
+        app: schedulesync-api
 
 alertmanager:
   enabled: false
