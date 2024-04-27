@@ -10,13 +10,14 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
+    - ServerSideApply=true
   project: default
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
   sources:
   - repoURL: 'https://prometheus-community.github.io/helm-charts'
-    chart: prometheus-community/kube-prometheus-stack
+    chart: kube-prometheus-stack
     targetRevision: 58.2.2
     helm:
       valueFiles:
