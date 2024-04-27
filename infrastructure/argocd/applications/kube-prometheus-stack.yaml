@@ -24,6 +24,3 @@ spec:
   - repoURL: 'https://github.com/missaelcorm-iteso/schedulesync-devops.git'
     targetRevision: main
     ref: values
-  - repoURL: https://github.com/missaelcorm-iteso/schedulesync-devops
-    path: kubernetes/prometheus/manifests
-    targetRevision: main
