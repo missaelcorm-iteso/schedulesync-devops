@@ -22,7 +22,7 @@ spec:
     fsGroup: 2000
     runAsNonRoot: true
     runAsUser: 1000
-  serviceAccountName: prometheus-k8s
+  serviceAccountName: kube-prometheus-stack-prometheus
   #serviceMonitorNamespaceSelector: {} #match all namespaces
   serviceMonitorNamespaceSelector:
     matchLabels:
