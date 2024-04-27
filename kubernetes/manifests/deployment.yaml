@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: schedulesync-api
   namespace: schedulesync-api
+  labels:
+    app: schedulesync-api
 spec:
   replicas: 4
   selector:

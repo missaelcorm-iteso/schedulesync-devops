@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: schedulesync-api
   namespace: schedulesync-api
+  labels:
+    app: schedulesync-api
 spec:
   type: LoadBalancer
   ports:
